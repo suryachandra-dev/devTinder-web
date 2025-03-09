@@ -48,7 +48,21 @@
             Navbar	navbar bg-base-200
             Alert	alert alert-success
     -Visit this site https://daisyui.com/docs/install/vite/
-    -Add Navbar component to App.jsx
+    -Add Navbar component of daisyui jsx code to App.jsx
+    -Create a new component NavBar.jsx in components folder
+    -Install(6.30.0 version using) React Router Dom(npm install react-router-dom)
+    --Create BrowserRouter >Routes >Route= "/Body" >Route Children
+    -Create an outlet in your Body Component
+    -Create a footer component using daisy Ui Components
 
 
 
+
+Body
+    NavBar
+    Route="/" =>Feed
+    Route="/login" =>Login
+    Route="/signup" =>Signup
+    Route="/connections" =>Connections
+    Route="/profile" =>Profile
+    Route="/settings" =>Settings
