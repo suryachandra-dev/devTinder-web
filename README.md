@@ -54,7 +54,18 @@
     --Create BrowserRouter >Routes >Route= "/Body" >Route Children
     -Create an outlet in your Body Component
     -Create a footer component using daisy Ui Components
-
+    -Install Axios 
+    -Cors -Install cors in Backend=>add this middleware to the backend with configuration  origin and credentials:true
+    -Whenever you are making an API Call pass axios =>{withCredentials:true}
+    -Install redux toolkit +react-redux https://redux-toolkit.js.org/tutorials/quick-start
+    -Create an appStore =>Configure the store
+    -Provide the appStore to the app component using <Provider store={appStore}></Provider> provided by the redux library   .
+    -Create a slice for the user and add it to the store
+    -Add userreducer to the appstore
+    -Add redux devtools in chrome
+    -Login and see if user details are stored in redux store
+    -Navbar sshould update details of user
+    -Refactor our code to contants BASE_URL and create a new components folder
 
 
 
