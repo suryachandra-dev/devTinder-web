@@ -66,6 +66,9 @@
     -Login and see if user details are stored in redux store
     -Navbar sshould update details of user
     -Refactor our code to contants BASE_URL and create a new components folder
+    -You should not be able to access the other page without being logged in
+    -If token is not present redirect to login page
+    
 
 
 

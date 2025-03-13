@@ -20,7 +20,7 @@ const Login = () => {
         },
         { withCredentials: true }
       );
-      /*   🔹 What Happens Without { withCredentials: true }?
+/*   🔹 What Happens Without { withCredentials: true }?
 If you don't include { withCredentials: true } in your Axios request:
 The browser won’t send cookies (e.g., no session tokens).
 The browser won’t store response cookies (e.g., your backend might set Set-Cookie, but the cookie won’t be stored).
