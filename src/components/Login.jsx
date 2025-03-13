@@ -9,6 +9,7 @@ const Login = () => {
   const navigate = useNavigate();
   const [emailId, setEmailId] = useState("rahul@gmail.com");
   const [password, setPassword] = useState("Rahul@123");
+  const [error,setError]=useState("");
   const dispatch = useDispatch();
   const handleLogin = async () => {
     try {
@@ -29,6 +30,7 @@ If you rely on authentication using cookies, your API requests will fail.*/
       dispatch(addUser(res.data));
       return navigate("/");
     } catch (err) {
+      setError(err?.response?.data || "Something went wrong");
       console.error(err);
     }
   };
@@ -70,6 +72,7 @@ If you rely on authentication using cookies, your API requests will fail.*/
           </label>
 
           {/* Login Button */}
+          <p className="text-red-500">{error}</p>
           <div className="card-actions justify-center mt-4">
             <button className="btn btn-primary w-1/4" onClick={handleLogin}>
               Login
