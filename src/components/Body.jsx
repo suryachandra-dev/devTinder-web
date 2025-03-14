@@ -5,7 +5,7 @@ import Footer from "./Footer";
 import axios from "axios";
 import { BASE_URL } from "../utils/constants";
 import { useDispatch, useSelector } from "react-redux";
-import { addUser } from "../utils/userSlice";
+import { addUser, removeUser } from "../utils/userSlice";
 import { useNavigate } from "react-router-dom";
 const Body = () => {
   const dispatch=useDispatch();
@@ -19,6 +19,7 @@ const Body = () => {
     }catch(error){
       if(error.response && error.response.status===401){
         // user is not authenticated,Please Login
+        removeUser();
         navigate('/login');
       }
       console.error(error);
