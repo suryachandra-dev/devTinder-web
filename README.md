@@ -76,7 +76,12 @@
     -show toast message on save of profile
     -NEW PAGE -To See all my existing connections
     -NEW PAGE -To See all my connection Requests
+    -Feature -Review Connection Request ->Accept/Reject 
 
+    Remaining :
+    -Send/ignore the user card from feed
+    -Signup New User
+    -E2ETesting
 
 
 Body

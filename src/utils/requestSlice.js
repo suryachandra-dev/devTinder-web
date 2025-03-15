@@ -8,7 +8,9 @@ const requestSlice=createSlice({
             return action.payload;
         },
         removeRequest:(state,action)=>{
-            return null;
+            console.log(action.payload);
+            const updatedRequests=state.filter((request)=>request._id!==action.payload);
+            return updatedRequests;
         }
     }
 });
