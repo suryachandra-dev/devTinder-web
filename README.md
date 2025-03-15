@@ -70,6 +70,11 @@
     -If token is not present redirect to login page
     -Logout
     -Profile
+    -Get the feed and the feed in the store
+    -Build the user card on the feed
+    -Edit profile feature
+    -show toast message on save of profile
+    -See all my connections
 
 
 

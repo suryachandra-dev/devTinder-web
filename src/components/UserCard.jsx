@@ -1,4 +1,5 @@
-const UserCard = ({ user }) => {
+const UserCard = ({user} ) => {//the recived prop will be like this {user:{...}}
+  console.log('userCard: ', user);
     const {photourl, about,gender,firstName,lastName,age,skills} = user || {};
   return (
     <div className="card bg-base-300 w-96 shadow-sm">
