@@ -74,7 +74,8 @@
     -Build the user card on the feed
     -Edit profile feature
     -show toast message on save of profile
-    -See all my connections
+    -NEW PAGE -To See all my existing connections
+    -NEW PAGE -To See all my connection Requests
 
 
 
