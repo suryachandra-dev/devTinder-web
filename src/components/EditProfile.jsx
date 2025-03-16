@@ -10,7 +10,7 @@ const EditProfile = ({ user }) => {
   const [age, setAge] = useState(user?.age || "");
   const [gender, setGender] = useState(user?.gender || "");
   const [photourl, setPhotourl] = useState(user?.photourl || "");
-  const [skills, setSkills] = useState(user?.skills || "");
+  const [skills, setSkills] = useState(user?.skills || []);
   const [about, setAbout] = useState(user?.about || "");
   const [error, setError] = useState("");
   const dispatch = useDispatch();
@@ -25,7 +25,7 @@ const EditProfile = ({ user }) => {
         age,
         gender,
         photourl,
-        skills,
+        skills:skills.length>0?skills:[],
         about,
       };
       const res = await axios.patch(BASE_URL + "/profile/edit", updatedUser, {
@@ -41,6 +41,12 @@ const EditProfile = ({ user }) => {
       console.error(error);
     }
   };
+  const handleSkillsChange = (event) => {
+    const value = event.target.value;
+    const skillArray = value.split(",").map((skill) => skill.trim()); // Ensure no spaces
+    setSkills(skillArray);
+  };
+  
   return (
     <>
       <div className="flex justify-center my-5">
@@ -124,8 +130,9 @@ const EditProfile = ({ user }) => {
                   type="text"
                   placeholder="Skills"
                   className="input input-bordered w-full"
-                  value={skills}
-                  onChange={(event) => setSkills(event.target.value)}
+                  value={skills.join(",")}
+                  onChange={handleSkillsChange
+                    }
                   required
                 />
 

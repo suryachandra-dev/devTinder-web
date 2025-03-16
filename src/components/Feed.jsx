@@ -28,3 +28,5 @@ const Feed = () => {
   return <div className="flex justify-center my-10"><UserCard user={feed?.[0] || null}/></div>;
 };
 export default Feed;
+
+

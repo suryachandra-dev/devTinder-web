@@ -7,10 +7,13 @@ import { BASE_URL } from "../utils/constants";
 
 const Login = () => {
   const navigate = useNavigate();
-  const [emailId, setEmailId] = useState("donald@gmail.com");
-  const [password, setPassword] = useState("Donald@123");
+  const [emailId, setEmailId] = useState("");
+  const [password, setPassword] = useState("");
+  const [firstName,setFirstName] = useState("");
+  const [lastName,setLastName] = useState("");
   const [error,setError]=useState("");
   const dispatch = useDispatch();
+  const [isLogin,setIsLogin] = useState(false);
   const handleLogin = async () => {
     try {
       const res = await axios.post(
@@ -26,7 +29,6 @@ If you don't include { withCredentials: true } in your Axios request:
 The browser won’t send cookies (e.g., no session tokens).
 The browser won’t store response cookies (e.g., your backend might set Set-Cookie, but the cookie won’t be stored).
 If you rely on authentication using cookies, your API requests will fail.*/
-      console.log(res);
       dispatch(addUser(res.data));
       return navigate("/");
     } catch (err) {
@@ -34,11 +36,54 @@ If you rely on authentication using cookies, your API requests will fail.*/
       console.error(err);
     }
   };
+  const handleSignUp=async ()=>{
+    try{
+      const res=await axios.post(BASE_URL+"/signup",{firstName,lastName,emailId,password},{withCredentials:true}
+      );
+      dispatch(addUser(res?.data?.data));
+      navigate("/profile");
+    }catch(error){
+      setError(error?.response?.data || "Something went wrong");
+      console.error(error);
+    }
+  }
+  const toggleLogin=()=>{
+    setIsLogin(!isLogin);
+  }
   return (
     <div className="flex justify-center my-10">
       <div className="card w-96 bg-base-200 shadow-xl">
         <div className="card-body">
-          <h2 className="card-title justify-center text-xl">Login</h2>
+          <h2 className="card-title justify-center text-xl">{isLogin ? "Login":"Sign Up"}</h2>
+                  {/* First Name Input */}
+             {!isLogin &&  <label className="form-control w-full">
+            <div className="label my-1">
+              <span className="label-text">First Name</span>
+            </div>
+            <input
+              type="email"
+              placeholder="First Name"
+              className="input input-bordered w-full"
+              value={firstName}
+              onChange={(event) => setFirstName(event.target.value)}
+              required
+            />
+          </label>}     
+
+                  {/* Last Name Input */}
+             {!isLogin &&              <label className="form-control w-full">
+            <div className="label my-1">
+              <span className="label-text">Last Name</span>
+            </div>
+            <input
+              type="email"
+              placeholder="Last Name"
+              className="input input-bordered w-full"
+              value={lastName}
+              onChange={(event) => setLastName(event.target.value)}
+              required
+            />
+          </label>}     
 
           {/* Email Input */}
           <label className="form-control w-full">
@@ -74,10 +119,11 @@ If you rely on authentication using cookies, your API requests will fail.*/
           {/* Login Button */}
           <p className="text-red-500">{error}</p>
           <div className="card-actions justify-center mt-4">
-            <button className="btn btn-primary w-1/4" onClick={handleLogin}>
-              Login
+            <button className="btn btn-primary w-1/4" onClick={isLogin ? handleLogin :handleSignUp}>
+             {isLogin ?"Login":"Sign Up"} 
             </button>
           </div>
+          <p onClick={toggleLogin} className="text-center text-blue-500 cursor-pointer mt-3">{isLogin ? "New user? SignUp here":"Existing User? Login here"}</p>
         </div>
       </div>
     </div>
