@@ -8,23 +8,13 @@ const feedSlice=createSlice({
             return action.payload;
         }
         ,
-        removeFeed:(state,action)=>{
-            return null;
-        },
-        updateFeed:(state,action)=>{
-            return state.map((item)=>item.id===action.payload.id?action.payload:item)
-        },
-        clearFeed:(state,action)=>{
-            return [];
-        },
-        likeFeed:(state,action)=>{
-            return state.map((item)=>item.id===action.payload.id?action.payload:item)
-        },
-        dislikeFeed:(state,action)=>{
-            return state.map((item)=>item.id===action.payload.id?action.payload:item)
-        },
+        removeUserFromFeed:(state,action)=>{
+            const updatedUsersFeed=state.filter((user)=>user._id!==action.payload);
+            return updatedUsersFeed;
+        }
+        
 
     }
 });
-export const {addFeed,removeFeed,updateFeed,clearFeed,likeFeed,dislikeFeed} = feedSlice.actions;
+export const {addFeed,removeUserFromFeed} = feedSlice.actions;
 export default feedSlice.reducer;

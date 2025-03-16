@@ -77,9 +77,9 @@
     -NEW PAGE -To See all my existing connections
     -NEW PAGE -To See all my connection Requests
     -Feature -Review Connection Request ->Accept/Reject 
-
-    Remaining :
     -Send/ignore the user card from feed
+    Remaining :
+    
     -Signup New User
     -E2ETesting
 

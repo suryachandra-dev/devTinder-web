@@ -8,7 +8,6 @@ const requestSlice=createSlice({
             return action.payload;
         },
         removeRequest:(state,action)=>{
-            console.log(action.payload);
             const updatedRequests=state.filter((request)=>request._id!==action.payload);
             return updatedRequests;
         }
