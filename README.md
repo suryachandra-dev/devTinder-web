@@ -92,3 +92,18 @@ Body
     Route="/connections" =>Connections
     Route="/profile" =>Profile
     Route="/settings" =>Settings
+
+
+
+-Deployment
+    -Signup on AWS
+    -Create a new EC2 instance
+    -Launch an instance 
+    -Connect to instance
+    -In Gitbash cd to where you downloaded the devTinder-secret.pem file
+    -chmod 400 "devTinder-secret.pem"
+    -ssh -i "devTinder-secret.pem" ubuntu@ec2-13-60-73-244.eu-north-1.compute.amazonaws.com
+    -Connected to the virtual machine using ssh command
+    -Install node version 18.18.2 using commands from nodejs official downloads page select nvm and select macos .
+    
+
