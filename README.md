@@ -230,7 +230,7 @@ Update the Configuration
 restart nginx
  sudo systemctl restart nginx
 -Modify the base url in constants.js file to "/api" from 
-http://localhost:3000/api
+"http://localhost:3000/"
 
 
 

@@ -43,7 +43,7 @@ If you rely on authentication using cookies, your API requests will fail.*/
       dispatch(addUser(res?.data?.data));
       navigate("/profile");
     }catch(error){
-      setError(error?.response?.data || "Something went wrong");
+      setError(error?.response?.data?.message || "Something went wrong");
       console.error(error);
     }
   }
