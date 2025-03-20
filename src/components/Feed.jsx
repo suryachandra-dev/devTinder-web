@@ -44,11 +44,11 @@ const Feed = () => {
   const feed = useSelector((store) => store.feed) || []; // Ensure feed is always an array
   const dispatch = useDispatch();
   const [pageNumber, setPageNumber] = useState(1); // Start from page 1
-  const limit = 2; // Number of profiles per API call
+  const limit = 10; // Number of profiles per API call
 
   useEffect(() => {
     const getFeed = async () => {
-      if (feed.length > 0) return; // Prevent extra calls when feed is populated
+      if (feed.length > 1) return; // Prevent extra calls when feed is populated
 
       try {
         console.log(`Fetching page ${pageNumber} with limit ${limit}`);
