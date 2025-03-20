@@ -105,5 +105,142 @@ Body
     -ssh -i "devTinder-secret.pem" ubuntu@ec2-13-60-73-244.eu-north-1.compute.amazonaws.com
     -Connected to the virtual machine using ssh command
     -Install node version 18.18.2 using commands from nodejs official downloads page select nvm and select macos .
-    
+    -Git clone from frontend and backend 
+    git clone https://github.com/suryachandra-dev/devTinder.git ---for backend
+    git clone https://github.com/suryachandra-dev/devTinder-frontend.git ---for frontend
+    -Frontend
+        -npm install ---> for the dependencies 
+        -npm run build 
+        -Install Nginx on to ubuntu server
+        You can install **NGINX** on your Ubuntu EC2 instance by following these steps:  
+
+---
+
+### **Step 1: Connect to Your Ubuntu Server**  
+If you haven't already, SSH into your instance:  
+```sh
+ssh -i "path/to/your-key.pem" ubuntu@your-public-ip
+```
+(Replace `your-public-ip` with your EC2 instance's IP address.)  
+
+---
+
+### **Step 2: Update Package Lists**  
+First, update your package list to ensure you're installing the latest version:  
+```sh
+sudo apt update
+```
+
+---
+
+### **Step 3: Install NGINX**  
+```sh
+sudo apt install nginx -y
+```
+The `-y` flag automatically confirms installation.  
+
+---
+
+### **Step 4: Start and Enable NGINX**  
+Start the NGINX service:  
+```sh
+sudo systemctl start nginx
+```
+Enable NGINX to start on boot:  
+```sh
+sudo systemctl enable nginx
+```
+
+---
+
+<!-- ### **Step 5: Allow Traffic in Firewall (If Enabled)**  
+Check if **UFW (Uncomplicated Firewall)** is active:  
+```sh
+sudo ufw status
+```
+If active, allow HTTP and HTTPS traffic:  
+```sh
+sudo ufw allow 'Nginx Full'
+sudo ufw reload
+```
+
+---
+
+### **Step 6: Verify Installation**  
+Check if NGINX is running:  
+```sh
+sudo systemctl status nginx
+```
+You should see something like **"active (running)"**.  
+
+---
+
+### **Step 7: Test NGINX**  
+In your **browser**, visit:  
+```
+http://your-public-ip
+```
+You should see the **NGINX welcome page**.  
+
+---
+
+### **Optional: Restart or Stop NGINX**  
+- **Restart** NGINX:  
+  ```sh
+  sudo systemctl restart nginx
+  ```
+- **Stop** NGINX:  
+  ```sh
+  sudo systemctl stop nginx
+  ```
+
+Let me know if you need help! 🚀
+
+
+ -->
+
+-copy code from dist folder(build files) to /var/www/html folder
+ Command:sudo scp -r dist/* /var/www/html/
+Enable port:80 of your instance in security group Inbound rules
+
+
+-Backend
+    -npm install
+    -updated db password
+    -allowed ec2 instance public Ip of virtual machine  on mongodb server in network access
+    -Allowed security config on port number 3000
+    -Installed npm install pm2 -g 
+    -pm2 start npm -- start
+    -pm2 logs
+    -pm2 flush <npm>
+    -pm2 stop <npm>
+    -pm2 delete <npm>
+    -pm2 start npm --name "devTinder" -- start
+NGINX config file using:
+    sudo nano /etc/nginx/sites-available/default
+Update the Configuration
+     location /api/ {
+        proxy_pass http://localhost:3000/;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+restart nginx
+ sudo systemctl restart nginx
+-Modify the base url in constants.js file to "/api" from 
+http://localhost:3000/api
+
+
+
+
+    Frontend =http://13.60.73.244/
+    Backend =http://13.60.73.244:3000/
+    Domain Name=devtinder.com=>13.60.73.244
+    Frontend=devtinder.com
+    Backend=devtinder.com:3000=>devtinder.com/api
+
+   
+
 

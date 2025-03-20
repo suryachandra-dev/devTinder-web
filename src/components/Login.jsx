@@ -13,7 +13,7 @@ const Login = () => {
   const [lastName,setLastName] = useState("");
   const [error,setError]=useState("");
   const dispatch = useDispatch();
-  const [isLogin,setIsLogin] = useState(false);
+  const [isLogin,setIsLogin] = useState(true);
   const handleLogin = async () => {
     try {
       const res = await axios.post(

@@ -18,8 +18,13 @@ const Body = () => {
     }catch(error){
       if(error.response && error.response.status===401){
         // user is not authenticated,Please Login
-        removeUser();
+        dispatch(removeUser());
         navigate('/login');
+      }else{
+        if(error.code==="ERR_NETWORK"){
+          dispatch(removeUser());
+        navigate('/login');
+        }
       }
       console.error(error);
     }
