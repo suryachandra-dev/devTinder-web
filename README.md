@@ -1,5 +1,5 @@
 # React + Vite
-
+### to connect to Mongodb compass use the nodejs connections striong not the cmpass string
 # Getting started
 -Create a Vite+React Application
 -command:(npm create vite@latest devTinder-web --template react)
