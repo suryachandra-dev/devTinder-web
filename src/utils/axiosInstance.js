@@ -1,5 +1,5 @@
 import appStore, { resetStore } from "./appStore.js";
-
+import axios from "axios";
 const axiosInstance = axios.create({
   baseURL: "/api",
   withCredentials: true,
