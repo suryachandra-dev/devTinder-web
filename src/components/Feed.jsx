@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BASE_URL } from "../utils/constants";
+
 import { useDispatch, useSelector } from "react-redux";
 import { addFeed } from "../utils/feedSlice";
 import UserCard from "./UserCard";
@@ -16,7 +16,7 @@ const Feed = () => {
       if (feed.length > 1) return; // Prevent extra calls when feed is populated
 
       try {
-        
+
         const res = await axiosInstance.get(`${BASE_URL}/user/feed?page=${pageNumber}&limit=${limit}`, {
           withCredentials: true,
         });
