@@ -17,7 +17,7 @@ const Feed = () => {
 
       try {
 
-        const res = await axiosInstance.get(`${BASE_URL}/user/feed?page=${pageNumber}&limit=${limit}`, {
+        const res = await axiosInstance.get(`/user/feed?page=${pageNumber}&limit=${limit}`, {
           withCredentials: true,
         });
 

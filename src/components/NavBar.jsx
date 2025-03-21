@@ -1,7 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-
-import { removeUser } from "../utils/userSlice";
 import axiosInstance from "../utils/axiosInstance";
 import { resetStore } from "../utils/appStore";
 const NavBar = () => {

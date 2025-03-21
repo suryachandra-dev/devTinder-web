@@ -1,4 +1,3 @@
-
 import { removeUserFromFeed } from "../utils/feedSlice";
 import { useDispatch } from "react-redux";
 import axiosInstance from "../utils/axiosInstance";
