@@ -2,38 +2,27 @@ import React, { useEffect } from "react";
 import NavBar from "./NavBar";
 import { Outlet } from "react-router-dom";
 import Footer from "./Footer";
-import axios from "axios";
 import { BASE_URL } from "../utils/constants";
 import { useDispatch, useSelector } from "react-redux";
-import { addUser, removeUser } from "../utils/userSlice";
+import { addUser } from "../utils/userSlice";
 import { useNavigate } from "react-router-dom";
+import axiosInstance from "../utils/axiosInstance";
 const Body = () => {
-  const dispatch=useDispatch();
-  const navigate = useNavigate();
-  const userData=useSelector((store)=>store.user);
-  const fetchUser=async ()=>{
-    try{
-      const user=await axios.get(BASE_URL+"/profile/view",{withCredentials:true});
+  const dispatch = useDispatch();
+  const userData = useSelector((store) => store.user);
+  const fetchUser = async () => {
+    try {
+      const user = await axiosInstance.get(BASE_URL + "/profile/view", { withCredentials: true });
       dispatch(addUser(user.data));
-    }catch(error){
-      if(error.response && error.response.status===401){
-        // user is not authenticated,Please Login
-        dispatch(removeUser());
-        navigate('/login');
-      }else{
-        if(error.code==="ERR_NETWORK"){
-          dispatch(removeUser());
-        navigate('/login');
-        }
-      }
+    } catch (error) {
       console.error(error);
     }
   };
-  useEffect(()=>{
-    if(!userData){
+  useEffect(() => {
+    if (!userData) {
       fetchUser();
     }
-  },[]);
+  }, []);
   return (
     <div>
       <NavBar />

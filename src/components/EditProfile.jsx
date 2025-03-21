@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import UserCard from "./UserCard";
 import { BASE_URL } from "../utils/constants";
-import axios from "axios";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
 const EditProfile = ({ user }) => {
@@ -25,7 +24,7 @@ const EditProfile = ({ user }) => {
         age,
         gender,
         photourl,
-        skills:skills.length>0?skills:[],
+        skills: skills.length > 0 ? skills : [],
         about,
       };
       const res = await axios.patch(BASE_URL + "/profile/edit", updatedUser, {
@@ -33,9 +32,9 @@ const EditProfile = ({ user }) => {
       });
       dispatch(addUser(res?.data?.user));
       setShowToast(true);
-    setTimeout(()=>{
+      setTimeout(() => {
         setShowToast(false);
-      },3000);
+      }, 3000);
     } catch (error) {
       setError(error?.response?.data);
       console.error(error);
@@ -46,7 +45,7 @@ const EditProfile = ({ user }) => {
     const skillArray = value.split(",").map((skill) => skill.trim()); // Ensure no spaces
     setSkills(skillArray);
   };
-  
+
   return (
     <>
       <div className="flex justify-center my-5">
@@ -132,7 +131,7 @@ const EditProfile = ({ user }) => {
                   className="input input-bordered w-full"
                   value={skills.join(",")}
                   onChange={handleSkillsChange
-                    }
+                  }
                   required
                 />
 
@@ -163,7 +162,7 @@ const EditProfile = ({ user }) => {
           user={{ firstName, lastName, age, gender, photourl, skills, about }}
         />
       </div>
-      {showToast &&  <div className="toast toast-top toast-center">
+      {showToast && <div className="toast toast-top toast-center">
         <div className="alert alert-success">
           <span >Profile saved successfully.</span>
         </div>

@@ -1,19 +1,19 @@
-import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { BASE_URL } from "../utils/constants";
 import { removeUser } from "../utils/userSlice";
+import axiosInstance from "../utils/axiosInstance";
+import { resetStore } from "../utils/appStore";
 const NavBar = () => {
   const user = useSelector((store) => store.user);
-  const dispatch=useDispatch();
-  const navigate=useNavigate();
-  // console.log("user: ", user);
-  const handleLogout=async ()=>{
-    try{
-      await axios.post(BASE_URL+"/logout",{},{withCredentials:true});
-      dispatch(removeUser());
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const handleLogout = async () => {
+    try {
+      await axiosInstance.post(BASE_URL + "/logout", {}, { withCredentials: true });
+      dispatch(resetStore());
       navigate("/login");
-    }catch(error){
+    } catch (error) {
       console.error(error);
     }
   }
@@ -24,13 +24,13 @@ const NavBar = () => {
       </div>
       <div className="flex gap-2">
         <div className="dropdown dropdown-end mx-5 flex ">
-        <p className="px-4">Welcome {user?.firstName}</p>
+          <p className="px-4">Welcome {user?.firstName}</p>
           <div
             tabIndex={0}
             role="button"
             className="btn btn-ghost btn-circle avatar"
           >
-            <div className="w-10 rounded-full "> 
+            <div className="w-10 rounded-full ">
               <img
                 alt="Tailwind CSS Navbar component"
                 src={
