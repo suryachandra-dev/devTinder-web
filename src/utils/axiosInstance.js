@@ -17,7 +17,7 @@ axiosInstance.interceptors.response.use(
     //   window.location.href = "/login";
     // Redirect to login page only if not already on login
     if (!window.location.pathname.includes("/login")) {
-        window.location.href = "/login";
+        window.location.href = "login";
       }
     }
     return Promise.reject(error);

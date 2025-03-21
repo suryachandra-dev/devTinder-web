@@ -16,7 +16,7 @@ const Login = () => {
   const handleLogin = async () => {
     try {
       const res = await axiosInstance.post(
-        `/login`,
+        `login`,
         {
           emailId,
           password,
