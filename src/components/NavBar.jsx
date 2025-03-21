@@ -8,7 +8,7 @@ const NavBar = () => {
   const navigate = useNavigate();
   const handleLogout = async () => {
     try {
-      await axiosInstance.post("/logout", {}, { withCredentials: true });
+      await axiosInstance.post("logout", {}, { withCredentials: true });
       dispatch(resetStore());
       navigate("/login");
     } catch (error) {

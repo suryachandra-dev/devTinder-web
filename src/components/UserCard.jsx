@@ -7,7 +7,7 @@ const UserCard = ({ user }) => {//the recived prop will be like this {user:{...}
   const dispatch = useDispatch();
   const handleSendRequest = async (requestMessage, toUserId) => {
     try {
-      const res = await axiosInstance.post(`/request/send/${requestMessage}/${toUserId}`, {}, { withCredentials: true });
+      const res = await axiosInstance.post(`request/send/${requestMessage}/${toUserId}`, {}, { withCredentials: true });
       // The id is to whom we are sending the request
       if (res.status === 200) {
         removeUserFromFeed(toUserId);

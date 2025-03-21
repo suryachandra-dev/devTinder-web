@@ -37,7 +37,7 @@ const Login = () => {
   };
   const handleSignUp = async () => {
     try {
-      const res = await axiosInstance.post("/signup", { firstName, lastName, emailId, password }, { withCredentials: true }
+      const res = await axiosInstance.post("signup", { firstName, lastName, emailId, password }, { withCredentials: true }
       );
       dispatch(addUser(res?.data?.data));
       navigate("/profile");
