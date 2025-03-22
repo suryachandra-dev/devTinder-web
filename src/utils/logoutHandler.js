@@ -1,4 +1,3 @@
-import { Navigate } from "react-router-dom";
 import { resetStore } from "./appStore"; // Import Redux action
 import store from "./appStore"; // Import store
 import api from "./axiosInterceptor";
