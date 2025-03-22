@@ -5,7 +5,6 @@ import Footer from "./Footer";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "../utils/userSlice";
 import { useNavigate } from "react-router-dom";
-import { resetStore } from "../utils/appStore";
 import api from "../utils/axiosInterceptor";
 const Body = () => {
   const dispatch=useDispatch();
@@ -27,7 +26,7 @@ const Body = () => {
     if (!userData) {
       fetchUser();
     }
-  },[dispatch,navigate,userData]);
+  },[]);
   return (
     <div>
       <NavBar />
