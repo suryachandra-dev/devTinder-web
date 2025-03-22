@@ -9,7 +9,6 @@ const UserCard = ({user} ) => {//the recived prop will be like this {user:{...}}
         const res=await api.post(`/request/send/${requestMessage}/${toUserId}`,{});
         // The id is to whom we are sending the request
         if(res.status===200){
-          removeUserFromFeed(toUserId);
           dispatch(removeUserFromFeed(toUserId));
         }
       }catch(error){
