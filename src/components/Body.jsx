@@ -16,7 +16,10 @@ const Body = () => {
       const user=await api.get("/profile/view");
       dispatch(addUser(user.data));
     }catch(error){
-      
+      if(error.response && error.response.status===401){
+        // user is not authenticated,Please Login
+        navigate('/login');
+      }
       console.error("Error fetching user:", error);
     }
   };
