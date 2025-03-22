@@ -3,7 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { addFeed } from "../utils/feedSlice";
 import UserCard from "./UserCard";
 import api from "../utils/axiosInterceptor";
+import { useNavigate } from "react-router-dom";
 const Feed = () => {
+  const navigate = useNavigate();
   const feed = useSelector((store) => store.feed) || []; // Ensure feed is always an array
   const dispatch = useDispatch();
   const [pageNumber, setPageNumber] = useState(1); // Start from page 1
@@ -19,6 +21,10 @@ const Feed = () => {
           setPageNumber((prev) => prev + 1); // Increment page only when data is received
         }
       } catch (error) {
+        if(!window.location.pathname.includes('/login')){
+          // user is not authenticated,Please Login
+         navigate('/login');
+       }
         console.error("Error fetching feed:", error);
       }
     };

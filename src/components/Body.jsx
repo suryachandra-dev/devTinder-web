@@ -16,8 +16,11 @@ const Body = () => {
       dispatch(addUser(user.data));
     }catch(error){
       if(error.response && error.response.status===401){
-        // user is not authenticated,Please Login
+        if(!window.location.pathname.includes('/login')){
+         // user is not authenticated,Please Login
         navigate('/login');
+      }
+        
       }
       console.error("Error fetching user:", error);
     }

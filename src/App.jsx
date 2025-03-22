@@ -7,6 +7,7 @@ import appStore from "./utils/appStore";
 import Feed from "./components/Feed";
 import Connections from "./components/Connections";
 import Requests from "./components/Requests";
+import ProtectedRoute from "./utils/ProtectedRoute";
 function App() {
   return (
     <>
@@ -18,14 +19,14 @@ function App() {
             {/**Public Route */}
             <Route path="/login" element={<Login />} />
             {/* Protected Routes */}
-            {/* <Route element={<ProtectedRoute />}> */}
+            <Route element={<ProtectedRoute />}>
               <Route path="/" element={<Body />}>
                 <Route path="/" element={<Feed />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/connections" element={<Connections />} />
                 <Route path="/requests" element={<Requests />} />
               </Route>
-            {/* </Route> */}
+            </Route>
           </Routes>
         </BrowserRouter>
       </Provider>
