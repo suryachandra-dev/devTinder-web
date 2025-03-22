@@ -1,8 +1,9 @@
 import axios from "axios";
 import {handleLogout} from "../utils/logoutHandler" // Import logout action
+import { BASE_URL } from "./constants";
 // Create an instance of Axios
 const api = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: BASE_URL,
   withCredentials: true, // If using cookies for authentication
 });
 // Add response interceptor
