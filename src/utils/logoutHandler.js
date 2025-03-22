@@ -8,7 +8,10 @@ export const handleLogout = async (navigate = null) => {
     if (navigate) {
       navigate("/login"); // Use navigate if available (React component)
     } else {
-      window.location.href = "/login"; // Otherwise, force redirect (Non-React code)
+        if(!window.location.pathname.includes('/login')){
+            window.location.href = "/login"; // Otherwise, force redirect (Non-React code)
+        }
+      
     }
   } catch (error) {
     console.error("Logout failed:", error);
