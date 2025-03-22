@@ -24,8 +24,8 @@ const Body = () => {
       console.error("Error fetching user:", error);
     }
   };
-  useEffect(()=>{
-    if(!userData){
+  useEffect(() => {
+    if (!userData) {
       fetchUser();
     }
   },[dispatch,navigate,userData]);

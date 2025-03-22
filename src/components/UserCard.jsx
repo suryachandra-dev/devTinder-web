@@ -23,12 +23,12 @@ const UserCard = ({user} ) => {//the recived prop will be like this {user:{...}}
         <img src={user?.photourl} alt="User Image" />
       </figure>
       <div className="card-body">
-        <h2 className="card-title">{firstName+" "+lastName}</h2>
-        {age && gender && <p>{ gender+" "+age+" years old"}</p>}
-       {about && <p>{about}</p>} 
+        <h2 className="card-title">{firstName + " " + lastName}</h2>
+        {age && gender && <p>{gender + " " + age + " years old"}</p>}
+        {about && <p>{about}</p>}
         <div className="card-actions justify-center my-4">
-          <button onClick={()=>handleSendRequest("ignored",_id)} className="btn btn-primary">Ignore </button>
-          <button  onClick={()=>handleSendRequest("interested",_id)} className="btn btn-secondary">Interested </button>
+          <button onClick={() => handleSendRequest("ignored", _id)} className="btn btn-primary">Ignore </button>
+          <button onClick={() => handleSendRequest("interested", _id)} className="btn btn-secondary">Interested </button>
         </div>
       </div>
     </div>

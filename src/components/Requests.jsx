@@ -16,13 +16,13 @@ const Requests = () => {
       console.error(error);
     }
   };
-  const reviewRequest = async (requestStatus, connectionRequestId,fromUserId) => {
+  const reviewRequest = async (requestStatus, connectionRequestId, fromUserId) => {
     try {
       const res = await api.post(
          `/request/review/${requestStatus}/${connectionRequestId}`,
         {}
       );
-      if(res.status===200){
+      if (res.status === 200) {
         dispatch(removeRequest(connectionRequestId));
         dispatch(removeUserFromFeed(fromUserId));
       }
@@ -45,8 +45,8 @@ const Requests = () => {
       <h1 className="text-2xl font-bold text-center">Requests</h1>
       <div className="flex flex-wrap justify-center gap-6">
         {requests.map((request) => {
-            const {_id}=request;
-            const fromUserId=request.fromUserId._id;
+          const { _id } = request;
+          const fromUserId = request.fromUserId._id;
           const { firstName, lastName, photourl, about, age, gender } =
             request.fromUserId;
           return (
@@ -76,13 +76,13 @@ const Requests = () => {
               <div className="flex flex-col ml-4 mt-3 sm:mt-0">
                 <button
                   className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition"
-                  onClick={()=>reviewRequest("accepted", _id,fromUserId)}
+                  onClick={() => reviewRequest("accepted", _id, fromUserId)}
                 >
                   Accept
                 </button>
                 <button
                   className="bg-red-500 text-white px-4 py-2 rounded-md mt-2 hover:bg-red-600 transition"
-                  onClick={()=>reviewRequest("rejected", _id,fromUserId)}
+                  onClick={() => reviewRequest("rejected", _id, fromUserId)}
                 >
                   Reject
                 </button>
