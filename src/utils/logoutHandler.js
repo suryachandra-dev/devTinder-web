@@ -16,7 +16,7 @@ export const handleLogout = async (navigate = null) => {
     if (navigate) {
       navigate("/login");
     } else if (!window.location.pathname.includes("/login")) {
-      window.location.href = "/login";
+      window.location.href = "/";
     }
   } catch (error) {
     console.error("Logout failed:", error);
