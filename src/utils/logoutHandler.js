@@ -1,3 +1,4 @@
+import { Navigate } from "react-router-dom";
 import { resetStore } from "./appStore"; // Import Redux action
 import store from "./appStore"; // Import store
 import api from "./axiosInterceptor";
@@ -9,7 +10,7 @@ export const handleLogout = async (navigate = null) => {
       navigate("/login"); // Use navigate if available (React component)
     } else {
         if(!window.location.pathname.includes('/login')){
-            window.location.href = "/login"; // Otherwise, force redirect (Non-React code)
+            window.location.href = "/"; // Otherwise, force redirect (Non-React code)
         }
       
     }
