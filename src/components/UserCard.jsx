@@ -1,14 +1,12 @@
-import axios from "axios";
-import { BASE_URL } from "../utils/constants";
 import { removeUserFromFeed } from "../utils/feedSlice";
 import { useDispatch } from "react-redux";
-
+import api from "../utils/axiosInterceptor";
 const UserCard = ({user} ) => {//the recived prop will be like this {user:{...}}
     const {photourl, about,gender,firstName,lastName,age,skills,_id} = user || {};
     const dispatch=useDispatch();
     const handleSendRequest=async (requestMessage,toUserId)=>{
       try{
-        const res=await axios.post(BASE_URL+`/request/send/${requestMessage}/${toUserId}`,{},{withCredentials:true});
+        const res=await api.post(`/request/send/${requestMessage}/${toUserId}`,{});
         // The id is to whom we are sending the request
         if(res.status===200){
           removeUserFromFeed(toUserId);
@@ -19,7 +17,6 @@ const UserCard = ({user} ) => {//the recived prop will be like this {user:{...}}
     }
   }
   if(!user) return <h1>No users in the feed</h1>;
-
   return (
     <div className="card bg-base-300 w-96 shadow-sm">
       <figure>

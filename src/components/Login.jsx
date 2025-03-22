@@ -1,10 +1,8 @@
-import axios from "axios";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
 import { useNavigate } from "react-router-dom";
-import { BASE_URL } from "../utils/constants";
-
+import api from "../utils/axiosInterceptor";
 const Login = () => {
   const navigate = useNavigate();
   const [emailId, setEmailId] = useState("");
@@ -16,13 +14,12 @@ const Login = () => {
   const [isLogin,setIsLogin] = useState(true);
   const handleLogin = async () => {
     try {
-      const res = await axios.post(
-        `${BASE_URL}/login`,
+      const res = await api.post(
+        `/login`,
         {
           emailId,
           password,
-        },
-        { withCredentials: true }
+        }
       );
 /*   🔹 What Happens Without { withCredentials: true }?
 If you don't include { withCredentials: true } in your Axios request:
@@ -38,7 +35,7 @@ If you rely on authentication using cookies, your API requests will fail.*/
   };
   const handleSignUp=async ()=>{
     try{
-      const res=await axios.post(BASE_URL+"/signup",{firstName,lastName,emailId,password},{withCredentials:true}
+      const res=await api.post("/signup",{firstName,lastName,emailId,password}
       );
       dispatch(addUser(res?.data?.data));
       navigate("/profile");
@@ -69,7 +66,6 @@ If you rely on authentication using cookies, your API requests will fail.*/
               required
             />
           </label>}     
-
                   {/* Last Name Input */}
              {!isLogin &&              <label className="form-control w-full">
             <div className="label my-1">
@@ -84,7 +80,6 @@ If you rely on authentication using cookies, your API requests will fail.*/
               required
             />
           </label>}     
-
           {/* Email Input */}
           <label className="form-control w-full">
             <div className="label my-1">
@@ -99,7 +94,6 @@ If you rely on authentication using cookies, your API requests will fail.*/
               required
             />
           </label>
-
           {/* Password Input */}
           <label className="form-control w-full mt-3">
             <div className="label my-1">
@@ -115,7 +109,6 @@ If you rely on authentication using cookies, your API requests will fail.*/
               minLength="8"
             />
           </label>
-
           {/* Login Button */}
           <p className="text-red-500">{error}</p>
           <div className="card-actions justify-center mt-4">
@@ -129,5 +122,4 @@ If you rely on authentication using cookies, your API requests will fail.*/
     </div>
   );
 };
-
 export default Login;

@@ -15,19 +15,21 @@ function App() {
     .The basename="/" ensures that all routes are relative to the root of the application. */}
         <BrowserRouter basename="/">
           <Routes>
-            <Route path="/" element={<Body />}>
-              {/* Children Routes */}
-              <Route path="/" element={<Feed />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/profile" element={<Profile />} />
-              <Route path="/connections" element={<Connections />} />
-              <Route path="/requests" element={<Requests />} />
-            </Route>
+            {/**Public Route */}
+            <Route path="/login" element={<Login />} />
+            {/* Protected Routes */}
+            {/* <Route element={<ProtectedRoute />}> */}
+              <Route path="/" element={<Body />}>
+                <Route path="/" element={<Feed />} />
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/connections" element={<Connections />} />
+                <Route path="/requests" element={<Requests />} />
+              </Route>
+            {/* </Route> */}
           </Routes>
         </BrowserRouter>
       </Provider>
     </>
   );
 }
-
 export default App;

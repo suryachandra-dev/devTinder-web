@@ -1,17 +1,14 @@
-import axios from "axios";
-import { BASE_URL } from "../utils/constants";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addRequests, removeRequest } from "../utils/requestSlice";
 import { removeUserFromFeed } from "../utils/feedSlice";
-
+import api from "../utils/axiosInterceptor";
 const Requests = () => {
   const requests = useSelector((store) => store.request);
   const dispatch = useDispatch();
-
   const fetchRequests = async () => {
     try {
-      const res = await axios.get(BASE_URL + "/user/requests/received", {
+      const res = await api.get("/user/requests/received", {
         withCredentials: true,
       });
       dispatch(addRequests(res.data.data));
@@ -21,12 +18,9 @@ const Requests = () => {
   };
   const reviewRequest = async (requestStatus, connectionRequestId,fromUserId) => {
     try {
-      const res = await axios.post(
-        BASE_URL + `/request/review/${requestStatus}/${connectionRequestId}`,
-        {},
-        {
-          withCredentials: true,
-        }
+      const res = await api.post(
+         `/request/review/${requestStatus}/${connectionRequestId}`,
+        {}
       );
       if(res.status===200){
         dispatch(removeRequest(connectionRequestId));
@@ -39,10 +33,9 @@ const Requests = () => {
   useEffect(() => {
     fetchRequests();
   }, []);
-
   if (!requests || requests.length === 0) {
     return (
-      <div className="text-center text-xl font-semibold mt-10">
+      <div className="text-2xl font-bold text-center mt-10">
         No requests found
       </div>
     );
@@ -67,7 +60,6 @@ const Requests = () => {
                 src={photourl}
                 alt="photo"
               />
-
               {/* Text Content */}
               <div className="flex flex-col ml-4 text-left flex-1">
                 <h1 className="font-bold text-lg text-gray-900">
@@ -80,7 +72,6 @@ const Requests = () => {
                 )}
                 <p className="text-sm text-gray-700 mt-1">{about}</p>
               </div>
-
               {/* Buttons */}
               <div className="flex flex-col ml-4 mt-3 sm:mt-0">
                 <button
@@ -103,5 +94,4 @@ const Requests = () => {
     </div>
   );
 };
-
 export default Requests;

@@ -1,9 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import UserCard from "./UserCard";
-import { BASE_URL } from "../utils/constants";
-import axios from "axios";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import api from "../utils/axiosInterceptor";
 const EditProfile = ({ user }) => {
   const [firstName, setFirstName] = useState(user?.firstName || "");
   const [lastName, setLastName] = useState(user?.lastName || "");
@@ -25,17 +24,15 @@ const EditProfile = ({ user }) => {
         age,
         gender,
         photourl,
-        skills:skills.length>0?skills:[],
+        skills: skills.length > 0 ? skills : [],
         about,
       };
-      const res = await axios.patch(BASE_URL + "/profile/edit", updatedUser, {
-        withCredentials: true,
-      });
+      const res = await api.patch("/profile/edit", updatedUser);
       dispatch(addUser(res?.data?.user));
       setShowToast(true);
-    setTimeout(()=>{
+      setTimeout(() => {
         setShowToast(false);
-      },3000);
+      }, 3000);
     } catch (error) {
       setError(error?.response?.data);
       console.error(error);
@@ -46,7 +43,6 @@ const EditProfile = ({ user }) => {
     const skillArray = value.split(",").map((skill) => skill.trim()); // Ensure no spaces
     setSkills(skillArray);
   };
-  
   return (
     <>
       <div className="flex justify-center my-5">
@@ -69,7 +65,6 @@ const EditProfile = ({ user }) => {
                   onChange={(event) => setFirstName(event.target.value)}
                   required
                 />
-
                 {/* Last Name */}
                 <div className="label my-1">
                   <span className="label-text">Last Name</span>
@@ -82,7 +77,6 @@ const EditProfile = ({ user }) => {
                   onChange={(event) => setLastName(event.target.value)}
                   required
                 />
-
                 {/* Age */}
                 <div className="label my-1">
                   <span className="label-text">Age</span>
@@ -95,20 +89,28 @@ const EditProfile = ({ user }) => {
                   onChange={(event) => setAge(event.target.value)}
                   required
                 />
-
                 {/* Gender */}
                 <div className="label my-1">
                   <span className="label-text">Gender</span>
                 </div>
-                <input
+                <select
+                  className="select select-bordered w-full"
+                  value={gender}
+                  onChange={(event) => setGender(event.target.value)}
+                >
+                  <option value="" disabled>Select Gender</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="other">Other</option>
+                </select>
+                {/* <input
                   type="text"
                   placeholder="Gender"
                   className="input input-bordered w-full"
                   value={gender}
                   onChange={(event) => setGender(event.target.value)}
                   required
-                />
-
+                /> */}
                 {/* Photo URL */}
                 <div className="label my-1">
                   <span className="label-text">Photo URL</span>
@@ -121,7 +123,6 @@ const EditProfile = ({ user }) => {
                   onChange={(event) => setPhotourl(event.target.value)}
                   required
                 />
-
                 {/* Skills */}
                 <div className="label my-1">
                   <span className="label-text">Skills</span>
@@ -132,10 +133,9 @@ const EditProfile = ({ user }) => {
                   className="input input-bordered w-full"
                   value={skills.join(",")}
                   onChange={handleSkillsChange
-                    }
+                  }
                   required
                 />
-
                 {/* About */}
                 <div className="label my-1">
                   <span className="label-text">About</span>
@@ -163,7 +163,7 @@ const EditProfile = ({ user }) => {
           user={{ firstName, lastName, age, gender, photourl, skills, about }}
         />
       </div>
-      {showToast &&  <div className="toast toast-top toast-center">
+      {showToast && <div className="toast toast-top toast-center">
         <div className="alert alert-success">
           <span >Profile saved successfully.</span>
         </div>

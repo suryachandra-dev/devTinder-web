@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-
 const feedSlice=createSlice({
     name:"feed",
     initialState:null,
@@ -12,8 +11,6 @@ const feedSlice=createSlice({
             const updatedUsersFeed=state.filter((user)=>user._id!==action.payload);
             return updatedUsersFeed;
         }
-        
-
     }
 });
 export const {addFeed,removeUserFromFeed} = feedSlice.actions;
