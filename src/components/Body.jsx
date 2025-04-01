@@ -20,7 +20,6 @@ const Body = () => {
          // user is not authenticated,Please Login
         navigate('/login');
       }
-        
       }
       console.error("Error fetching user:", error);
     }
