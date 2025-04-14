@@ -241,6 +241,41 @@ restart nginx
     Frontend=devtinder.com
     Backend=devtinder.com:3000=>devtinder.com/api
 
+
+### Adding a Custom DomainName
+    -Purchase Domain Name from Godaddy
+    -Sign up on cloudfare
+    -Change name servers on godaddy and point it to cloudfare
+    -wait for some time till your name servers are updated -15 min
+    -DNS record: Record A devtinder.today 13.60.43.234
+    -Enable SSl for website in ssl section like http-->https
+
+
+### setting up the amazon ses.
+    -create a new user using i am identity.
+    -open amazon ses and crearte a new identity via domain and -Verify email identity.
+    -To verify ownership of this identity, DKIM must be configured in the domain's DNS settings using the CNAME records provided.
+    -Install AWS SDK -v3
+    -code repo-https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javascriptv3/example_code/ses#code-examples
+    -Setup sesClient
+    -Access credentials should be created in i am under securityCredentials Tab
+    -Add the credentials tpo the env file
+    -write code for sesClient
+    -write code for sending email address
+    -Make the email dynamic by passing more parameters
+
+
+
+
+
+
+
+
+
+    adrian.ns.cloudflare.com
+    keaton.ns.cloudflare.com
+
+
    
 
 
