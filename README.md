@@ -264,6 +264,17 @@ restart nginx
     -write code for sending email address
     -Make the email dynamic by passing more parameters
 
+# Scheduling jobs in Nodejs
+    -Installing node-cron
+    -learning about cron expressions syntax -crontab.guru
+    -Schedule a job
+    -date-fns
+    -find all the unique email Id who have got connection request in previous day
+    -send email to all the users who have got connection request in previous day
+    -Explore Queue mechanism to send bulk emails
+    -Amazon SES Bulk emails
+    -Make send email function dynamic
+
 
 
 

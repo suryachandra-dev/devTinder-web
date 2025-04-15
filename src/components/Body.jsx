@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import NavBar from "./NavBar";
 import { Outlet } from "react-router-dom";
-import Footer from "./Footer";
+// import Footer from "./Footer";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "../utils/userSlice";
 import { useNavigate } from "react-router-dom";
@@ -33,7 +33,7 @@ const Body = () => {
     <div>
       <NavBar />
       <Outlet /> {/* Outlet is a placeholder for the child routes */}
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

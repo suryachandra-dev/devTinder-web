@@ -8,6 +8,12 @@ import Feed from "./components/Feed";
 import Connections from "./components/Connections";
 import Requests from "./components/Requests";
 import ProtectedRoute from "./utils/ProtectedRoute";
+import About from "./components/About";
+import Contact from "./components/Contact";
+import PrivacyPolicy from "./components/PrivacyPolicy";
+import TermsConditions from "./components/TermsConditions";
+import RefundPolicy from "./components/RefundPolicy";
+import Footer from "./components/Footer";
 function App() {
   return (
     <>
@@ -18,6 +24,11 @@ function App() {
           <Routes>
             {/**Public Route */}
             <Route path="/login" element={<Login />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms-and-conditions" element={<TermsConditions />} />
+            <Route path="/refund-policy" element={<RefundPolicy />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/about" element={<About />} />
             {/* Protected Routes */}
             <Route element={<ProtectedRoute />}>
               <Route path="/" element={<Body />}>
@@ -28,6 +39,7 @@ function App() {
               </Route>
             </Route>
           </Routes>
+          <Footer/>
         </BrowserRouter>
       </Provider>
     </>
