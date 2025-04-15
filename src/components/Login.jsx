@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
 import { useNavigate } from "react-router-dom";
 import api from "../utils/axiosInterceptor";
+import Footer from "./Footer";
 const Login = () => {
   const navigate = useNavigate();
   const [emailId, setEmailId] = useState("");
@@ -48,7 +49,8 @@ const Login = () => {
     setIsLogin(!isLogin);
   }
   return (
-    <div className="flex justify-center my-10">
+    <div>
+          <div className="flex justify-center my-10">
       <div className="card w-96 bg-base-200 shadow-xl">
         <div className="card-body">
           <h2 className="card-title justify-center text-xl">{isLogin ? "Login" : "Sign Up"}</h2>
@@ -120,6 +122,9 @@ const Login = () => {
         </div>
       </div>
     </div>
+    <Footer/>
+    </div>
+
   );
 };
 export default Login;

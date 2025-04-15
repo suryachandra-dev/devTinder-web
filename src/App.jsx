@@ -13,7 +13,6 @@ import Contact from "./components/Contact";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import TermsConditions from "./components/TermsConditions";
 import RefundPolicy from "./components/RefundPolicy";
-import Footer from "./components/Footer";
 function App() {
   return (
     <>
@@ -39,7 +38,6 @@ function App() {
               </Route>
             </Route>
           </Routes>
-          <Footer/>
         </BrowserRouter>
       </Provider>
     </>
