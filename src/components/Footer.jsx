@@ -12,6 +12,8 @@ const Footer = () => {
           <Link to="/refund-policy" className="link link-hover">Refund & Cancellation Policy</Link>
           <Link to="/contact" className="link link-hover">Contact Us</Link>
           <Link to="/about" className="link link-hover">About Us</Link>
+          <Link to="/shipping-policy" className="link link-hover">Shipping Policy</Link>
+
         </div>
       </aside>
     </footer>
