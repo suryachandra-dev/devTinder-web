@@ -1,5 +1,16 @@
+import { useEffect, useState } from "react";
 import api from "../utils/axiosInterceptor"
 const Premium = () => {
+    const [isPremium, setIsPremium] = useState(false);
+    const verifyPremiumUser = async () => {
+        const res=await api.get("/payment/premium/verify");
+        if(res.data.isPremium){
+            setIsPremium(true);
+        }
+    }
+    useEffect(() => {
+        verifyPremiumUser();
+    },[]);
     const handleBuy = async (type) => {
         //TODO: handle buy
         const order=await api.post("/payment/create",{
@@ -21,13 +32,14 @@ const Premium = () => {
             },
             "theme": {
                 "color": "#3399cc"
-            }
+            },
+            "handler": verifyPremiumUser,
         };
         //It should  open the razorpay Dialog Box
         const rzp = new window.Razorpay(options);
         rzp.open();
     }
-    return (
+    return ( !isPremium ?
         <div className="m-10">
             <div className="flex w-full">
                 <div className="card bg-base-300 rounded-box grid h-60 grow place-items-center">
@@ -51,7 +63,7 @@ const Premium = () => {
                     </ul>
                     <button onClick={()=>handleBuy("gold")} className="btn btn-primary">Get Gold</button></div>
             </div>
-        </div>
+        </div> :"You are already a premium User"
     )
 }
 export default Premium;
