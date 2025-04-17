@@ -276,16 +276,25 @@ restart nginx
     -Make send email function dynamic
 
 
-
-
-
-
-
-
-
+### Namse Servers of Cloudfare
     adrian.ns.cloudflare.com
     keaton.ns.cloudflare.com
 
+### Razorpay Payment gateway Integration
+    -Sign up on razorpay & complete KYC.
+    -Go to accounts & settings and create a new api key and secret.
+    -Created a Ui for premium page
+    -Creating an api for create order in Backend.
+    -Added my Razorpay Key and Secret in .env file
+    -initialized razorpay in backend
+    -Creating Order on Razorpay
+    -Created Payment Schema and model
+    -Saved the order in payments collection
+    -make the api dynamic passing user details,membership type and amount from req body,etc.,
+    -Setup razorpay webhook on your live api
+    Refer:https://github.com/razorpay/razorpay-node/blob/master/documents/webhook.md
+    https://razorpay.com/docs/payments/payment-gateway/web-integration/standard/integration-steps/#1-build-integration
+    
 
    
 

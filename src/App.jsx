@@ -14,6 +14,7 @@ import PrivacyPolicy from "./components/PrivacyPolicy";
 import TermsConditions from "./components/TermsConditions";
 import RefundPolicy from "./components/RefundPolicy";
 import ShippingPolicy from "./components/ShippingPolicy";
+import Premium from "./components/Premium";
 function App() {
   return (
     <>
@@ -38,6 +39,7 @@ function App() {
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/connections" element={<Connections />} />
                 <Route path="/requests" element={<Requests />} />
+                <Route path="premium" element={<Premium/>} />
               </Route>
             </Route>
           </Routes>
