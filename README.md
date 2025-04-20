@@ -294,7 +294,26 @@ restart nginx
     -Setup razorpay webhook on your live api
     Refer:https://github.com/razorpay/razorpay-node/blob/master/documents/webhook.md
     https://razorpay.com/docs/payments/payment-gateway/web-integration/standard/integration-steps/#1-build-integration
-    
+
+
+# Real time chat using websocket
+    -Build the UI for a chat window on /chat/:targetUserId
+    -setup socket.io in backend
+    -npm i socket.io
+    -setup frontend socket.io-client
+    -Initialise the chat
+    -Create Socket Connection
+    -Listen to events
+    -Save chat to database
+Homework:Improve the UI
+Homework :Fix the security Bug-auth in web sockets
+Homework:If i am not friend ,then i should not be able to send message
+Show green when online.
+Limit messages to show in chat while fetching from db.
+Project 1:Can you make a Tic-Tac toe game
+Project 2 :Chess game
+
+
 
    
 
